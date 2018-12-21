@@ -15,13 +15,30 @@ __dependencies__ = []
 iconPath = iconLookup('gdrive')
 if not iconPath:
     iconPath = os.path.dirname(__file__)+"/gdrive.png"
+
+docs_icon = iconLookup('docs')
+if not docs_icon:
+    docs_icon = os.path.dirname(__file__)+"/docs.png"
+
+forms_icon = iconLookup('forms')
+if not forms_icon:
+    forms_icon = os.path.dirname(__file__)+"/forms.jpg"
+
+sheets_icon = iconLookup('sheets')
+if not sheets_icon:
+    sheets_icon = os.path.dirname(__file__)+"/sheets.jpg"
+
+slides_icon = iconLookup('sheets')
+if not slides_icon:
+    slides_icon = os.path.dirname(__file__)+"/slides.jpeg"
+
 baseurl = 'https://drive.google.com'
 user_agent = "org.albert.extension.python.gdrive"
 
 
 def new_doc_item(trigger):
     item = Item(id=__prettyname__,
-                icon=iconPath)
+                icon=docs_icon)
     item.text = "Create new document"
     item.completion = trigger + " doc"
     item.addAction(UrlAction('Create new doumentc', "docs.new"))
@@ -30,7 +47,7 @@ def new_doc_item(trigger):
 
 def new_sheet_item(trigger):
     item = Item(id=__prettyname__,
-                icon=iconPath)
+                icon=sheets_icon)
     item.text = "Create new spreadsheet"
     item.completion = trigger + " sheet"
     item.addAction(UrlAction('Create new spreadsheet', "sheets.new"))
@@ -39,7 +56,7 @@ def new_sheet_item(trigger):
 
 def new_slides_item(trigger):
     item = Item(id=__prettyname__,
-                icon=iconPath)
+                icon=slides_icon)
     item.text = "Create new presentation"
     item.completion = trigger + " slides"
     item.addAction(UrlAction('Create new presentation', "slides.new"))
@@ -48,7 +65,9 @@ def new_slides_item(trigger):
 
 def new_form_item(trigger):
     item = Item(id=__prettyname__,
-                icon=iconPath)
+                icon=forms_icon
+
+                )
     item.text = "Create new form"
     item.completion = trigger + " form"
     item.addAction(UrlAction('Create new Google form', "forms.new"))
